@@ -12,6 +12,7 @@ driver = webdriver.Chrome(service=service)
 driver.get("https://orteil.dashnet.org/cookieclicker/")
 
 cookie_id = "bigCookie"
+cookies_id = "cookies"
 
 WebDriverWait(driver, 5).until(
     EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'English')]"))
@@ -25,6 +26,8 @@ WebDriverWait(driver, 5).until(
 )
 
 cookie = driver.find_element(By.ID, cookie_id)
-cookie.click()
 
-time.sleep(10)
+while True:
+    cookie.click()
+    cookies_count = driver.find_element(By.ID, cookies_id).text
+    print(cookies_count)
