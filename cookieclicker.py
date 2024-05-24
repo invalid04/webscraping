@@ -29,5 +29,6 @@ cookie = driver.find_element(By.ID, cookie_id)
 
 while True:
     cookie.click()
-    cookies_count = driver.find_element(By.ID, cookies_id).text
+    cookies_count = driver.find_element(By.ID, cookies_id).text.split(" ")[0]
+    cookies_count = int(cookies_count.replace(",", ""))
     print(cookies_count)
